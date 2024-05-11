@@ -1,4 +1,4 @@
-import { IStock } from '..';
+import { IStock } from './stock';
 import { IDining } from './dining';
 import { IDish } from './dish';
 
