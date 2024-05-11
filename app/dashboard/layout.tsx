@@ -1,4 +1,10 @@
+import { Metadata } from "next";
+
 import SideNav from '@/app/ui/dashboard/sidenav';
+
+export const metadata: Metadata = {
+  title: 'Home',
+};
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
