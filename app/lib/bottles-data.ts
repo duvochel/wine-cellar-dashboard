@@ -35,7 +35,7 @@ export async function fetchFilteredBottles(query: string, currentPage: number) {
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
-    const bottles = await sql<IBottleRequest>`
+    const bottles = await sql`
         SELECT
           bottle.id,
           bottle.domain,
@@ -44,8 +44,11 @@ export async function fetchFilteredBottles(query: string, currentPage: number) {
           bottle.region,
           bottle.color,
           bottle.vintage,
-          bottle.comment
+          bottle.comment,
+          stock."remainQuantity",
+          stock.price
         FROM bottle
+        JOIN stock ON stock."bottleId" = bottle.id
         WHERE 
           bottle.domain ILIKE ${`%${query}%`} OR
           bottle.appellation ILIKE ${`%${query}%`} OR

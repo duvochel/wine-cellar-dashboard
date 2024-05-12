@@ -74,6 +74,9 @@ export default async function BottlesTable({
                 <th scope="col" className="px-3 py-5 font-medium">
                   Region
                 </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  price
+                </th>
                 <th scope="col" className="relative py-3 pl-6 pr-3">
                   <span className="sr-only">Edit</span>
                 </th>
@@ -95,6 +98,9 @@ export default async function BottlesTable({
                         alt={`${bottle.domain}'s profile picture`}
                       />
                       <p>{bottle.domain}</p>
+                      <span className="text-grey-900 flex-grow text-end font-bold">
+                        {bottle.remainQuantity}
+                      </span>
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
@@ -111,6 +117,9 @@ export default async function BottlesTable({
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {bottle.region}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {bottle.price}
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
