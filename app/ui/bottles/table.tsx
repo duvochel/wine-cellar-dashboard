@@ -60,10 +60,13 @@ export default async function BottlesTable({
                   Domaine
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Color
+                  Appellation
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Vintage
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  Color
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Label
@@ -91,18 +94,17 @@ export default async function BottlesTable({
                         height={28}
                         alt={`${bottle.domain}'s profile picture`}
                       />
-                      <p>
-                        <span>{bottle.domain}</span>
-                        <span> - </span>
-                        <span>{bottle.appellation}</span>
-                      </p>
+                      <p>{bottle.domain}</p>
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {bottle.color}
+                    {bottle.appellation}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {bottle.vintage}
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-3">
+                    {bottle.color}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {bottle.label}

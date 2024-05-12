@@ -6,12 +6,22 @@ const ITEMS_PER_PAGE = 6;
 
 export async function fetchBottlesPages(query: string) {
   noStore();
-  console.log(query);
 
   try {
-    const count = await sql`SELECT COUNT(*) FROM bottle`;
+    const count = await sql`
+    SELECT COUNT(*) FROM bottle
+    WHERE 
+      bottle.domain ILIKE ${`%${query}%`} OR
+      bottle.appellation ILIKE ${`%${query}%`} OR
+      bottle.label ILIKE ${`%${query}%`} OR
+      bottle.region ILIKE ${`%${query}%`} OR
+      bottle.color ILIKE ${`%${query}%`} OR
+      bottle.vintage::text ILIKE ${`%${query}%`} OR
+      bottle.comment ILIKE ${`%${query}%`}
+    `;
 
     const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+    console.log(`Total pages: ${totalPages}`);
     return totalPages;
   } catch (error) {
     console.error('Database Error:', error);
@@ -21,7 +31,7 @@ export async function fetchBottlesPages(query: string) {
 
 export async function fetchFilteredBottles(query: string, currentPage: number) {
   noStore();
-  console.log('filter', query);
+
   const offset = (currentPage - 1) * ITEMS_PER_PAGE;
 
   try {
@@ -29,13 +39,22 @@ export async function fetchFilteredBottles(query: string, currentPage: number) {
         SELECT
           bottle.id,
           bottle.domain,
-          bottle.color,
-          bottle.region,
           bottle.appellation,
+          bottle.label,
+          bottle.region,
+          bottle.color,
           bottle.vintage,
-          bottle.label
+          bottle.comment
         FROM bottle
-        ORDER BY bottle.domain
+        WHERE 
+          bottle.domain ILIKE ${`%${query}%`} OR
+          bottle.appellation ILIKE ${`%${query}%`} OR
+          bottle.label ILIKE ${`%${query}%`} OR
+          bottle.region ILIKE ${`%${query}%`} OR
+          bottle.color ILIKE ${`%${query}%`} OR
+          bottle.vintage::text ILIKE ${`%${query}%`} OR
+          bottle.comment ILIKE ${`%${query}%`}
+        ORDER BY bottle.domain  
         LIMIT ${ITEMS_PER_PAGE} OFFSET ${offset}
       `;
 

@@ -31,12 +31,21 @@ export default async function Page({
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Search invoices..." />
       </div>
-      <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-        <BottlesTable currentPage={currentPage} query={query} />
-      </Suspense>
-      <div className="mt-5 flex w-full justify-center">
-        <Pagination totalPages={totalPages} />
-      </div>
+      {totalPages > 0 ? (
+        <>
+          <Suspense
+            key={query + currentPage}
+            fallback={<InvoicesTableSkeleton />}
+          >
+            <BottlesTable currentPage={currentPage} query={query} />
+          </Suspense>
+          <div className="mt-5 flex w-full justify-center">
+            <Pagination totalPages={totalPages} />
+          </div>
+        </>
+      ) : (
+        <div className="flex h-full content-center">no results</div>
+      )}
     </div>
   );
 }
