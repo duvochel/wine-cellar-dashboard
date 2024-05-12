@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss';
+import { purple, saturatedPurple } from './app/ui/colors';
 
 const config: Config = {
   content: [
@@ -17,6 +18,22 @@ const config: Config = {
           500: '#0070F3',
           600: '#2F6FEB',
         },
+        grey: {
+          0: '#FFFFFF',
+          50: '#FAF9FB',
+          100: '#F4F3F6',
+          200: '#E7E5EB',
+          300: '#DDDBE3',
+          400: '#D4D1DB',
+          500: '#A19CAF',
+          600: '#747180',
+          700: '#575363',
+          800: '#2B2837',
+          900: '#1E1B27',
+          main: '#A19CAF', // 500
+        },
+        purple,
+        saturatedPurple,
       },
     },
     keyframes: {

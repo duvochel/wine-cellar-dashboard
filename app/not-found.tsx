@@ -9,7 +9,7 @@ export default function NotFound() {
       <p>Could not find the requested resource.</p>
       <Link
         href="/dashboard/"
-        className="mt-4 rounded-md bg-gray-800 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-300"
+        className="bg-saturatedPurple-800 mt-4 rounded-md px-4 py-2 text-sm text-white transition-colors hover:bg-purple-300"
       >
         Go to dashboard
       </Link>
