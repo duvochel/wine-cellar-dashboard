@@ -1,6 +1,6 @@
 import Image from 'next/image';
-import { fetchFilteredBottles } from '@/app/lib/bottles-data';
-import { DeleteInvoice, UpdateInvoice } from '../invoices/buttons';
+import { fetchFilteredBottles } from '@/app/lib/data/bottles';
+import { ButtonDeleteBottle, ButtonUpdateBottle } from './buttons';
 
 export default async function BottlesTable({
   query,
@@ -46,8 +46,8 @@ export default async function BottlesTable({
                     <p>{bottle.region}</p>
                   </div>
                   <div className="flex justify-end gap-2">
-                    <UpdateInvoice id={bottle.id} />
-                    <DeleteInvoice id={bottle.id} />
+                    <ButtonUpdateBottle id={bottle.id} />
+                    <ButtonDeleteBottle id={bottle.id} />
                   </div>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default async function BottlesTable({
                         alt={`${bottle.domain}'s profile picture`}
                       />
                       <p>{bottle.domain}</p>
-                      <span className="text-grey-900 flex-grow text-end font-bold">
+                      <span className="flex-grow text-end font-bold text-grey-900">
                         {bottle.remainQuantity}
                       </span>
                     </div>
@@ -119,13 +119,13 @@ export default async function BottlesTable({
                     {bottle.region}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {bottle.price}
+                    {bottle.price} €
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       {' '}
-                      <UpdateInvoice id={bottle.id} />
-                      <DeleteInvoice id={bottle.id} />
+                      <ButtonUpdateBottle id={bottle.id} />
+                      <ButtonDeleteBottle id={bottle.id} />
                     </div>
                   </td>
                 </tr>

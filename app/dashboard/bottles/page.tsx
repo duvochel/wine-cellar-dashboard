@@ -1,4 +1,4 @@
-import { fetchBottlesPages } from '@/app/lib/bottles-data';
+import { fetchBottlesPages } from '@/app/lib/data/bottles';
 import BottlesTable from '@/app/ui/bottles/table';
 import { lusitana } from '@/app/ui/fonts';
 import Pagination from '@/app/ui/invoices/pagination';

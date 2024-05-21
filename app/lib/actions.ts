@@ -28,8 +28,20 @@ const FormSchema = z.object({
   date: z.string(),
 });
 
+const FormBottleSchema = z.object({
+  id: z.string(),
+  domain: z.string({ invalid_type_error: 'Please select a domain.' }),
+  region: z.string({ invalid_type_error: 'Please select a region.' }),
+  color: z.string({ invalid_type_error: 'Please select a color.' }),
+  price: z.coerce
+    .number()
+    .gt(0, { message: 'Please enter an amount greater than $0.' }),
+  date: z.string(),
+});
+
 const CreateInvoice = FormSchema.omit({ id: true, date: true });
 const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+const UpdateBottle = FormBottleSchema.omit({ id: true, date: true });
 
 export async function createInvoice(prevState: State, formData: FormData) {
   const validatedFields = CreateInvoice.safeParse({
