@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs';
 import { fetchBottleById } from '@/app/lib/data/bottles';
-import EditBottleForm from '@/app/ui/bottles/EditBottleForm';
+import EditBottleForm from '@/app/ui/bottles/editBottleForm';
 
 export const metadata: Metadata = {
   title: 'Edit Bottle',
