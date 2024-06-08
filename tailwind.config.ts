@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
-
 import { fontFamily } from 'tailwindcss/defaultTheme';
+
+import { purple, saturatedPurple } from './app/ui/colors';
 
 const config = {
   darkMode: ['class'],
@@ -20,10 +21,34 @@ const config = {
       },
     },
     extend: {
+      gridTemplateColumns: {
+        '13': 'repeat(13, minmax(0, 1fr))',
+      },
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
       colors: {
+        blue: {
+          400: '#2589FE',
+          500: '#0070F3',
+          600: '#2F6FEB',
+        },
+        grey: {
+          0: '#FFFFFF',
+          50: '#FAF9FB',
+          100: '#F4F3F6',
+          200: '#E7E5EB',
+          300: '#DDDBE3',
+          400: '#D4D1DB',
+          500: '#A19CAF',
+          600: '#747180',
+          700: '#575363',
+          800: '#2B2837',
+          900: '#1E1B27',
+          main: '#A19CAF', // 500
+        },
+        purple,
+        saturatedPurple,
         border: 'hsl(var(--border))',
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
@@ -64,6 +89,11 @@ const config = {
         sm: 'calc(var(--radius) - 4px)',
       },
       keyframes: {
+        shimmer: {
+          '100%': {
+            transform: 'translateX(100%)',
+          },
+        },
         'accordion-down': {
           from: { height: '0' },
           to: { height: 'var(--radix-accordion-content-height)' },
@@ -79,7 +109,7 @@ const config = {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/forms')],
 } satisfies Config;
 
 export default config;
