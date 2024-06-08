@@ -1,6 +1,4 @@
-import Image from 'next/image';
 import { fetchFilteredBottles } from '@/app/lib/data/bottles';
-import { ButtonDeleteBottle, ButtonUpdateBottle } from './buttons';
 import TableMobile from './tableMobile';
 import TableDesktop from './tableDesktop';
 
