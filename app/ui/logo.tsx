@@ -4,10 +4,10 @@ import { lusitana } from '@/app/ui/fonts';
 export default function Logo() {
   return (
     <div
-      className={`${lusitana.className} flex flex-col items-center gap-2 leading-none text-white`}
+      className={`${lusitana.className} flex items-center gap-2 leading-none text-white lg:flex-col`}
     >
       <GlobeAltIcon className="h-12 w-12 rotate-[15deg]" />
-      <p className="text-[32px]">WineCellar</p>
+      <p className="text-lg lg:text-3xl">WineCellar</p>
     </div>
   );
 }
